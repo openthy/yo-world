@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zyne...</title>
+	
+	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="nexusUI.js"></script>
+	<script type="text/javascript" src="Tone.min.js"></script>
+		<script type="text/javascript" src="p5.js"> </script>
+<script type="text/javascript" src="p5.dom.js"> </script>
+
+
+
+  <script language="javascript" type="text/javascript" src="boid.js"></script>
+  <script language="javascript" type="text/javascript" src="flock.js"></script>
+
+
+
+<!-- <script type="text/javascript" src="hw4newwithSYNTH.js"></script> -->
+<script type="text/javascript" src="MainFinal3.js"></script>
+</head>
+<body>
+
+<style> body { padding: 0; margin: 0 }
+
+#typewriter{
+	display: none;
+}
+
+</style>
+
+<canvas nx="typewriter" id="typewriter"></canvas>
+
+	<script type="text/javascript">
+
+	var addnewmusic = new MusClass();
+	
+	addnewmusic.player();
+
+	addnewmusic.buffer.onload = function (){
+    addnewmusic.player.start();
+}
+	
+   var engageuser = new EngageClass();
+
+
+nx.onload = function(){
+		typewriter.on("*", function(data){
+			if (data.on === 1){
+				if (engageuser.notes[data.key]){
+					engageuser.synth.triggerAttack(engageuser.notes[data.key]);
+				}
+			} else {
+				engageuser.synth.triggerRelease();
+			}
+		});
+	};
+
+
+
+	</script>
+</body>
+</html>
